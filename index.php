@@ -20,7 +20,6 @@ $student = $student->readAll();
     
     <div class="button-group">
         <a href="create.php" class="btn btn-success mb-3">Add Student</a>
-        <a href="LateStudent.php" class="btn btn-success mb-3">Late Student</a>
     </div>
     <table class="table table-bordered">
         <thead>
@@ -57,10 +56,11 @@ $student = $student->readAll();
                     <?php if(isset($student['ID'])): ?>
                     <a href="update.php?id=<?= $student['ID']; ?>" class="btn btn-primary btn-sm">Edit</a>
                     <a href="delete.php?id=<?= $student['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    <a  class="btn btn-danger btn-sm">Late</a>
                     <?php endif; ?>
                 </td>
             </tr>
-            <?php endforeach; ?>
+            <?php endforeach; ?>  
         </tbody>
     </table>
     

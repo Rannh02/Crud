@@ -15,10 +15,10 @@ class Student{
             throw new Exception('Database connection failed.');
         }
     }
-    public function create($first_name, $email){
-        $sql = "INSERT INTO " . $this->table . " (first_name, email) VALUES (:first_name, :email)";
-        $stmt = $this->conn->prepare($sql);
-        return $stmt->execute(['first_name' => $first_name, 'email' => $email]);
+        public function create($First_Name, $Last_Name, $Email){
+            $sql = "INSERT INTO " . $this->table . " (First_Name, Last_Name, Email) VALUES (:First_Name, :Last_Name, :Email)";
+            $stmt = $this->conn->prepare($sql);
+            return $stmt->execute(['First_Name' => $First_Name, 'Last_Name' => $Last_Name, 'Email' => $Email]);
     }
     public function readAll(){
         $sql = "SELECT * FROM " . $this->table;
@@ -26,23 +26,22 @@ class Student{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function getById($id){
-        $sql = "SELECT * FROM " . $this->table . " WHERE id = :id";
+    public function getById($ID){
+        $sql = "SELECT * FROM " . $this->table . " WHERE ID = :ID";
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute(['id' => $id]);
+        $stmt->execute(['ID' => $ID]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    public function update($id, $first_name, $email){
-        $sql = "UPDATE " . $this->table . " SET first_name = :first_name, email = :email WHERE id = :id";
+    public function update($ID, $First_Name, $Last_Name, $Email){
+        $sql = "UPDATE " . $this->table . " SET First_Name = :First_Name, Last_Name = :Last_Name, Email = :Email WHERE ID = :ID";
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute(['first_name' => $first_name, 'email' => $email, 'id' => $id]);
+        return $stmt->execute(['First_Name' => $First_Name, 'Last_Name' => $Last_Name, 'Email' => $Email, 'ID' => $ID]);
     }
-    public function delete($id){
-        $sql = "DELETE FROM " . $this->table . " WHERE id = :id";
+    public function delete($ID){
+        $sql = "DELETE FROM " . $this->table . " WHERE ID = :ID";
         $stmt = $this->conn->prepare($sql);
-        return $stmt->execute(['id' => $id]);
+        return $stmt->execute(['ID' => $ID]);
     }
 
 }
 ?>
-

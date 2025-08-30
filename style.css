@@ -1,0 +1,33 @@
+body{
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: azure;
+    font-size: 15px;
+}
+.center-title {
+	text-align: center;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+.btn.btn-primary.btn-sm{
+    font-size: 14px;
+    font-weight: bold;
+
+}
+.btn.btn-danger.btn-sm{
+    font-size: 14px;
+    font-weight: bold;
+}
+.btn.btn-primary{
+    font-size: 14px;
+    font-weight: bold;
+}
+.btn.btn-secondary{
+    font-size: 14px;
+    font-weight: bold;
+}
+.btn.btn-success.mb-3{
+    font-size: 14px;
+    font-weight: bold;
+}

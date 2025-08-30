@@ -4,6 +4,13 @@ body{
     background-color: azure;
     font-size: 15px;
 }
+.student-list-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: -3rem;
+    letter-spacing: 1px;
+    font-family: 'Courier New', Courier, monospace;
+}
 .center-title {
 	text-align: center;
     font-size: 50px;
@@ -27,7 +34,19 @@ body{
     font-size: 14px;
     font-weight: bold;
 }
+.button-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
 .btn.btn-success.mb-3{
     font-size: 14px;
     font-weight: bold;
+    display: inline-block;
+    width: auto;
+    margin-bottom: 1rem;
+    float: none;
+    text-align: center;
+    box-shadow: none;
 }

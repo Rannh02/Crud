@@ -15,8 +15,13 @@ $student = $student->readAll();
 </head>
 <body class="container mt-4">
     <h1 class="center-title">Student Attendance</h1>
-    <h2></h2>Student List</h2>
-    <a href="create.php" class="btn btn-success mb-3">Add Student</a>
+    <h2 class="student-list-title">Students Lists</h2>
+
+    
+    <div class="button-group">
+        <a href="create.php" class="btn btn-success mb-3">Add Student</a>
+        <a href="LateStudent.php" class="btn btn-success mb-3">Late Student</a>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>

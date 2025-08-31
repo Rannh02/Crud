@@ -1,8 +1,8 @@
 <?php
 require_once 'Student.php';
 
-$student = new Student();
-$student = $student->readAll(); 
+$studentObj = new Student();
+$students = $studentObj->readAll(); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +17,6 @@ $student = $student->readAll();
     <h1 class="center-title">Student Attendance</h1>
     <h2 class="student-list-title">Students Lists</h2>
 
-    
     <div class="button-group">
         <a href="create.php" class="btn btn-success mb-3">Add Student</a>
     </div>
@@ -33,36 +32,41 @@ $student = $student->readAll();
             </tr>
         </thead>
         <tbody>
-            <?php foreach($student as $student): ?>
-            <tr>
-                <td><?=isset($student['ID']) ? htmlspecialchars($student['ID']) : ''; ?></td>
-                <td><?=isset($student['First_Name']) ? htmlspecialchars($student['First_Name']) : ''; ?></td>
-                <td><?=isset($student['Last_Name']) ? htmlspecialchars($student['Last_Name']) : ''; ?></td>
-                <td><?=isset($student['Email']) ? htmlspecialchars($student['Email']) : ''; ?></td>
-                <td>
-                    <?php
-                    if (isset($student['Time'])) {
-                        $dt = $student['Time'];
-                        $parts = explode(' ', $dt, 2);
-                        if (count($parts) === 2) {
-                            echo htmlspecialchars($parts[0] . ' / ' . $parts[1]);
-                        } else {
-                            echo htmlspecialchars($dt);
+            <?php if (is_array($students) && !empty($students)): ?>
+                <?php foreach($students as $student): ?>
+                <tr>
+                    <td><?= isset($student['ID']) ? htmlspecialchars($student['ID']) : ''; ?></td>
+                    <td><?= isset($student['First_Name']) ? htmlspecialchars($student['First_Name']) : ''; ?></td>
+                    <td><?= isset($student['Last_Name']) ? htmlspecialchars($student['Last_Name']) : ''; ?></td>
+                    <td><?= isset($student['Email']) ? htmlspecialchars($student['Email']) : ''; ?></td>
+                    <td>
+                        <?php
+                        if (isset($student['Time'])) {
+                            $dt = $student['Time'];
+                            $parts = explode(' ', $dt, 2);
+                            if (count($parts) === 2) {
+                                echo htmlspecialchars($parts[0] . ' / ' . $parts[1]);
+                            } else {
+                                echo htmlspecialchars($dt);
+                            }
                         }
-                    }
-                    ?>
-                </td>
-                <td>
-                    <?php if(isset($student['ID'])): ?>
-                    <a href="update.php?id=<?= $student['ID']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="delete.php?id=<?= $student['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
-                    <a  class="btn btn-danger btn-sm">Late</a>
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>  
+                        ?>
+                    </td>
+                    <td>
+                        <?php if (isset($student['ID'])): ?>
+                            <a href="update.php?id=<?= $student['ID']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="delete.php?id=<?= $student['ID']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="late.php?id=<?= $student['ID']; ?>" class="btn btn-danger btn-sm">Mark as Late</a>
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="6">No students found.</td>
+                </tr>
+            <?php endif; ?>
         </tbody>
     </table>
-    
 </body>
 </html>
